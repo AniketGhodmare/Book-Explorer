@@ -1,11 +1,10 @@
 import { lazy, Suspense } from "react"
 import { BrowserRouter, Routes, Route } from "react-router"
 import SearchPage from "./pages/SearchPage"
-// import BookDetails from "./pages/BookDetails"
-import FavoritesPage from "./pages/FavoritesPage"
 import Navbar from "./components/Navbar"
 import PageLoadFallback from "./components/PageLoadFallback"
 const BookDetails = lazy(() => import('./pages/BookDetails'))
+const FavoritesPage = lazy(() => import('./pages/FavoritesPage'))
 
 
 function App() {
