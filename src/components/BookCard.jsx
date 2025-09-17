@@ -1,13 +1,11 @@
-import { useContext } from "react";
+import { memo, useContext } from "react";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { Link } from "react-router";
 import { FavoritesContext } from "../context/FavoritesContext";
+import Savebutton from "./Savebutton";
 
-const BookCard = ({ book }) => {
-    const { id, volumeInfo } = book;
-    const { title, authors, imageLinks } = volumeInfo;
+const BookCard = memo(({ book, id, title, authors, imageLinks }) => {
     const { addFavorite, removeFavorite, favorites } = useContext(FavoritesContext);
-
     const isFavorite = favorites.some((b) => b.id === id);
 
     return (
@@ -27,14 +25,6 @@ const BookCard = ({ book }) => {
             )}
         </div>
     );
-}
-const Savebutton = ({ onClick, children }) => {
-    return (
-        <button type="button" className="p-1.5  text-sm rounded-full bg-white/70 absolute top-4 right-4 cursor-pointer border border-gray-300 flex items-center gap-1"
-            onClick={onClick}
-        >
-            {children}
-        </button>
-    )
-}
-export default BookCard
+})
+
+export default BookCard 
